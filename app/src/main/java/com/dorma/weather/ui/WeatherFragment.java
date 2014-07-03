@@ -19,6 +19,7 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.CheckBox;
 import android.widget.CursorAdapter;
 import android.widget.TextView;
 
@@ -46,7 +47,7 @@ public class WeatherFragment extends ListFragment implements LoaderManager.Loade
     @Override
     public void onResume() {
         super.onResume();
-        LocalBroadcastManager.getInstance(getActivity()).registerReceiver(receiver,  new IntentFilter(WeatherService.WEATHER_LOADED_ACTION));
+        LocalBroadcastManager.getInstance(getActivity()).registerReceiver(receiver, new IntentFilter(WeatherService.WEATHER_LOADED_ACTION));
     }
 
     @Override
@@ -123,18 +124,20 @@ public class WeatherFragment extends ListFragment implements LoaderManager.Loade
 
         @Override
         public View newView(Context context, Cursor cursor, ViewGroup parent) {
-            return LayoutInflater.from(getActivity()).inflate(android.R.layout.simple_list_item_activated_2, parent, false);
+            return LayoutInflater.from(getActivity()).inflate(R.layout.weather_list_item, parent, false);
         }
 
         @Override
         public void bindView(View view, Context context, Cursor cursor) {
             long from = cursor.getLong(cursor.getColumnIndexOrThrow(DatabaseHelper.FROM_TIME));
             long to = cursor.getLong(cursor.getColumnIndexOrThrow(DatabaseHelper.TO_TIME));
-            ((TextView)view.findViewById(android.R.id.text1)).setText("From: " + DateFormat.format("dd MMM hh:mm", new Date(from)) + ", To: " + DateFormat.format("dd MMM hh:mm", new Date(to)));
+            ((TextView)view.findViewById(R.id.time)).setText("From: " + DateFormat.format("dd MMM hh:mm", new Date(from)) + ", To: " + DateFormat.format("dd MMM hh:mm", new Date(to)));
 
             String forecast = cursor.getString(cursor.getColumnIndexOrThrow(DatabaseHelper.FORECAST));
             float t = cursor.getFloat(cursor.getColumnIndexOrThrow(DatabaseHelper.TEMPERATURE));
-            ((TextView)view.findViewById(android.R.id.text2)).setText(forecast + ", t: " + t);
+            ((TextView)view.findViewById(R.id.forecast)).setText(forecast + ", t: " + t);
+            boolean warm = cursor.getInt(cursor.getColumnIndexOrThrow(DatabaseHelper.WARM)) > 0;
+            ((CheckBox)view.findViewById(R.id.checkBox)).setChecked(warm);
         }
     }
 }
