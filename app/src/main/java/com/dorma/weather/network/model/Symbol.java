@@ -1,4 +1,4 @@
-package com.dorma.weather.network;
+package com.dorma.weather.network.model;
 
 import org.simpleframework.xml.Attribute;
 import org.simpleframework.xml.Root;
