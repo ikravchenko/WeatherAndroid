@@ -3,6 +3,7 @@
 
     <string name="app_name">Weather</string>
     <string name="hello_world">Hello world!</string>
-    <string name="action_settings">Settings</string>
+    <string name="request_menu">Settings</string>
+    <string name="add_menu">Add</string>
 
 </resources>
