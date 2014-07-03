@@ -19,6 +19,8 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AbsListView;
+import android.widget.AdapterView;
 import android.widget.CheckBox;
 import android.widget.CursorAdapter;
 import android.widget.TextView;
@@ -67,6 +69,14 @@ public class WeatherFragment extends ListFragment implements LoaderManager.Loade
         super.onViewCreated(view, savedInstanceState);
         adapter = new WeatherAdapter(getActivity(), null);
         setListAdapter(adapter);
+        getListView().setClickable(true);
+        getListView().setChoiceMode(AbsListView.CHOICE_MODE_SINGLE);
+        getListView().setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                startActivity(new Intent(getActivity(), DetailActivity.class));
+            }
+        });
     }
 
     @Override

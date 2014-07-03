@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/fromTime"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="18sp"
+        android:text="From:"
+        android:padding="8dp"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@id/fromTime"
+        android:layout_toRightOf="@id/fromTime"
+        android:layout_alignParentRight="true"
+        tools:text="1 of July, 3:00"
+        android:id="@+id/fromTimeVal" />
+
+    <TextView
+        android:id="@+id/toTime"
+        android:layout_below="@id/fromTime"
+        android:padding="8dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="18sp"
+        android:text="To:"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@id/toTime"
+        android:layout_toRightOf="@id/toTime"
+        android:layout_alignParentRight="true"
+        tools:text="2 of July, 6:00"
+        android:id="@+id/toTimeVal" />
+
+    <TextView
+        android:id="@+id/forecast"
+        android:layout_below="@id/toTime"
+        android:padding="8dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="18sp"
+        android:text="Forecast:"/>
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@id/forecast"
+        android:layout_alignParentRight="true"
+        android:layout_toRightOf="@id/forecast"
+        tools:text="Edit forecast here"
+        android:inputType="text"
+        android:id="@+id/forecastVal" />
+
+    <TextView
+        android:id="@+id/temperature"
+        android:layout_below="@id/forecast"
+        android:padding="8dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="18sp"
+        android:text="Temperature:"/>
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@id/temperature"
+        android:layout_alignParentRight="true"
+        android:layout_toRightOf="@id/temperature"
+        android:inputType="numberSigned"
+        tools:text="56.7"
+        android:id="@+id/temperatureVal" />
+
+    <CheckedTextView
+        android:id="@+id/warm"
+        android:layout_below="@id/temperature"
+        android:padding="8dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="18sp"
+        android:text="Warm?"/>
+
+</RelativeLayout>
