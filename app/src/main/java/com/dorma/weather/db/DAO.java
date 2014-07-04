@@ -9,4 +9,5 @@ public interface DAO<T> {
     void update(T newItem);
     void deleteById(long id);
     ContentValues toContentValues(T item);
+    void deleteAll();
 }

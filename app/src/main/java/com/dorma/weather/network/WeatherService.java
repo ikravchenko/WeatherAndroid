@@ -37,6 +37,7 @@ public class WeatherService extends IntentService {
 
     @Override
     protected void onHandleIntent(Intent intent) {
+        dao.deleteAll();
         HttpURLConnection connection = null;
         try {
             try {

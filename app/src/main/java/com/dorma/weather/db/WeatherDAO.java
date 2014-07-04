@@ -87,4 +87,10 @@ public class WeatherDAO implements DAO<WeatherItem> {
 
         return values;
     }
+
+    @Override
+    public void deleteAll() {
+        helper.getWritableDatabase().delete(DatabaseHelper.TABLE_NAME, null, null);
+        notifyChange();
+    }
 }
