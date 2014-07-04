@@ -26,7 +26,7 @@ public class MainActivity extends Activity {
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         if (item.getItemId() == R.id.ble_action) {
-            startActivity(new Intent(this, BLEScanActivity.class));
+            startActivity(new Intent(this, BLEDevicesActivity.class));
         }
         return super.onOptionsItemSelected(item);
     }

@@ -13,12 +13,13 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.dorma.weather.R;
 
-public class BLEScanActivity extends ListActivity {
+public class BLEDevicesActivity extends ListActivity {
 
     private static final long SCAN_PERIOD = 10000;
     private static final int REQUEST_ENABLE_BT = 2;
@@ -57,6 +58,15 @@ public class BLEScanActivity extends ListActivity {
             Intent enableBtIntent = new Intent(BluetoothAdapter.ACTION_REQUEST_ENABLE);
             startActivityForResult(enableBtIntent, REQUEST_ENABLE_BT);
         }
+    }
+
+    @Override
+    protected void onListItemClick(ListView l, View v, int position, long id) {
+        super.onListItemClick(l, v, position, id);
+        Intent intent = new Intent(this, BLEServicesActivity.class);
+        intent.putExtra(BLEServicesActivity.DEVICE_EXTRA, (BluetoothDevice)l.getItemAtPosition(position));
+        startActivity(intent);
+        scanLeDevice(false);
     }
 
     private void initBLEAdapter() {

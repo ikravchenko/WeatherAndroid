@@ -6,7 +6,9 @@
     <uses-permission android:name="android.permission.BLUETOOTH" />
     <uses-permission android:name="android.permission.BLUETOOTH_ADMIN" />
 
-    <uses-feature android:name="android.hardware.bluetooth_le" android:required="true"/>
+    <uses-feature
+        android:name="android.hardware.bluetooth_le"
+        android:required="true" />
 
     <application
         android:name=".WeatherApplication"
@@ -23,10 +25,13 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".ui.DetailActivity"
-            android:label="Weather Details"/>
-        <activity android:name=".ui.BLEScanActivity"
-            android:label="Bluetooth LE Devices"/>
+        <activity
+            android:name=".ui.DetailActivity"
+            android:label="Weather Details" />
+        <activity
+            android:name=".ui.BLEDevicesActivity"
+            android:label="Bluetooth LE Devices" />
+        <activity android:name=".ui.BLEServicesActivity" />
 
         <service android:name=".network.WeatherService" />
     </application>
