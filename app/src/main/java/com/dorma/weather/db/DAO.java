@@ -1,7 +1,6 @@
 package com.dorma.weather.db;
 
 import android.content.ContentValues;
-import android.os.ConditionVariable;
 
 public interface DAO<T> {
 
