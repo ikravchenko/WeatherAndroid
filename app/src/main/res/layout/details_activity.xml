@@ -3,7 +3,8 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:layout_gravity="center">
 
     <TextView
         android:id="@+id/fromTime"
@@ -55,7 +56,7 @@
         android:layout_alignBaseline="@id/forecast"
         android:layout_alignParentRight="true"
         android:layout_toRightOf="@id/forecast"
-        tools:text="Edit forecast here"
+        android:text="Chocolate rain"
         android:inputType="text"
         android:id="@+id/forecastVal" />
 
@@ -75,10 +76,10 @@
         android:layout_alignParentRight="true"
         android:layout_toRightOf="@id/temperature"
         android:inputType="numberSigned"
-        tools:text="56.7"
+        android:text="56.7"
         android:id="@+id/temperatureVal" />
 
-    <CheckedTextView
+    <CheckBox
         android:id="@+id/warm"
         android:layout_below="@id/temperature"
         android:padding="8dp"

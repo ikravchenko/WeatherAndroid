@@ -28,7 +28,9 @@ import android.widget.TextView;
 import com.dorma.weather.R;
 import com.dorma.weather.WeatherApplication;
 import com.dorma.weather.db.DatabaseHelper;
+import com.dorma.weather.db.WeatherDAO;
 import com.dorma.weather.network.WeatherService;
+import com.dorma.weather.network.model.Time;
 
 import java.util.Date;
 
@@ -49,7 +51,8 @@ public class WeatherFragment extends ListFragment implements LoaderManager.Loade
     @Override
     public void onResume() {
         super.onResume();
-        LocalBroadcastManager.getInstance(getActivity()).registerReceiver(receiver, new IntentFilter(WeatherService.WEATHER_LOADED_ACTION));
+        getLoaderManager().restartLoader(0, null, this);
+        LocalBroadcastManager.getInstance(getActivity()).registerReceiver(receiver, new IntentFilter(WeatherDAO.WEATHER_UPDATE_ACTION));
     }
 
     @Override
@@ -74,7 +77,9 @@ public class WeatherFragment extends ListFragment implements LoaderManager.Loade
         getListView().setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                startActivity(new Intent(getActivity(), DetailActivity.class));
+                Intent intent = new Intent(getActivity(), DetailActivity.class);
+                intent.putExtra(DetailActivity.WEATHER_ID, id);
+                startActivity(intent);
             }
         });
     }
@@ -92,6 +97,7 @@ public class WeatherFragment extends ListFragment implements LoaderManager.Loade
             getActivity().startService(new Intent(getActivity(), WeatherService.class));
             return true;
         } else if (id == R.id.action_add) {
+            startActivity(new Intent(getActivity(), DetailActivity.class));
             return true;
         }
         return super.onOptionsItemSelected(item);

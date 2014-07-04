@@ -8,8 +8,8 @@ public class Symbol {
     @Attribute(name="name")
     public String name;
 
-    public Symbol(
-                 @Attribute(name = "name") String name) {
+    public Symbol(@Attribute(name = "name") String name) {
         this.name = name;
     }
+
 }
