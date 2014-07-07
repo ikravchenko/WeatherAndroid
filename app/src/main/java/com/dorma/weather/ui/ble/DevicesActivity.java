@@ -1,4 +1,4 @@
-package com.dorma.weather.ui;
+package com.dorma.weather.ui.ble;
 
 import android.app.ListActivity;
 import android.bluetooth.BluetoothAdapter;
@@ -19,7 +19,7 @@ import android.widget.Toast;
 
 import com.dorma.weather.R;
 
-public class BLEDevicesActivity extends ListActivity {
+public class DevicesActivity extends ListActivity {
 
     private static final long SCAN_PERIOD = 10000;
     private static final int REQUEST_ENABLE_BT = 2;
@@ -63,8 +63,8 @@ public class BLEDevicesActivity extends ListActivity {
     @Override
     protected void onListItemClick(ListView l, View v, int position, long id) {
         super.onListItemClick(l, v, position, id);
-        Intent intent = new Intent(this, BLEServicesActivity.class);
-        intent.putExtra(BLEServicesActivity.DEVICE_EXTRA, (BluetoothDevice)l.getItemAtPosition(position));
+        Intent intent = new Intent(this, DeviceDetailsActivity.class);
+        intent.putExtra(DeviceDetailsActivity.DEVICE_EXTRA, (BluetoothDevice)l.getItemAtPosition(position));
         startActivity(intent);
         scanLeDevice(false);
     }
@@ -81,9 +81,11 @@ public class BLEDevicesActivity extends ListActivity {
             handler.postDelayed(new Runnable() {
                 @Override
                 public void run() {
-                    scanning = false;
-                    updateScanTitle();
-                    bluetoothAdapter.stopLeScan(leScanCallback);
+                    if (scanning) {
+                        scanning = false;
+                        updateScanTitle();
+                        bluetoothAdapter.stopLeScan(leScanCallback);
+                    }
                 }
             }, SCAN_PERIOD);
 

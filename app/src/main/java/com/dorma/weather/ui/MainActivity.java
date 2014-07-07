@@ -7,6 +7,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 
 import com.dorma.weather.R;
+import com.dorma.weather.ui.ble.DevicesActivity;
 
 
 public class MainActivity extends Activity {
@@ -26,7 +27,7 @@ public class MainActivity extends Activity {
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         if (item.getItemId() == R.id.ble_action) {
-            startActivity(new Intent(this, BLEDevicesActivity.class));
+            startActivity(new Intent(this, DevicesActivity.class));
         }
         return super.onOptionsItemSelected(item);
     }

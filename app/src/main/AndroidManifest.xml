@@ -29,9 +29,9 @@
             android:name=".ui.DetailActivity"
             android:label="Weather Details" />
         <activity
-            android:name=".ui.BLEDevicesActivity"
+            android:name=".ui.ble.DevicesActivity"
             android:label="Bluetooth LE Devices" />
-        <activity android:name=".ui.BLEServicesActivity" />
+        <activity android:name=".ui.ble.DeviceDetailsActivity" />
 
         <service android:name=".network.WeatherService" />
     </application>
